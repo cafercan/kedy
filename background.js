@@ -4,6 +4,7 @@ chrome.runtime.onInstalled.addListener(() => {
     enabled: true,
     catSize: 140,
     catColor: '#322d35',
+    catTheme: 'black',
     eyeColor: '#ffffff',
     showLedge: true,
     laserMode: false,

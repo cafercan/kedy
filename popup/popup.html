@@ -13,7 +13,7 @@
       <div class="header-title">
         <span class="icon">🐾</span>
         <h1>Kedy</h1>
-        <span class="version-tag">v0.1.0</span>
+        <span class="version-tag">v0.1.1</span>
       </div>
       <label class="switch-toggle" title="Eklentiyi Aç / Kapat">
         <input type="checkbox" id="enabledToggle" checked>
@@ -38,18 +38,21 @@
 
       <!-- Renk Temaları -->
       <section class="control-group">
-        <label class="group-label">Kedi Rengi</label>
+        <label class="group-label">Kedi Teması / Rengi</label>
         <div class="theme-chips">
-          <button class="chip active" data-color="#322d35" title="Gece Kedisi (GIF)">
+          <button class="chip active" data-theme="black" data-color="#322d35" title="Gece Kedisi (GIF)">
             <span class="color-dot" style="background:#322d35;"></span> Gece
           </button>
-          <button class="chip" data-color="#e67e22" title="Tekir / Sarı">
+          <button class="chip" data-theme="tuxedo" data-color="#221f26" title="Smokinli Kedi (Tuxedo)">
+            <span class="color-dot tuxedo-dot"></span> Smokin
+          </button>
+          <button class="chip" data-theme="orange" data-color="#e67e22" title="Tekir / Sarı">
             <span class="color-dot" style="background:#e67e22;"></span> Tekir
           </button>
-          <button class="chip" data-color="#f8fafc" title="Beyaz">
+          <button class="chip" data-theme="white" data-color="#f8fafc" title="Beyaz">
             <span class="color-dot" style="background:#f8fafc; border:1px solid #cbd5e1;"></span> Beyaz
           </button>
-          <button class="chip" data-color="#ec4899" title="Pembe">
+          <button class="chip" data-theme="pink" data-color="#ec4899" title="Pembe">
             <span class="color-dot" style="background:#ec4899;"></span> Pembe
           </button>
         </div>

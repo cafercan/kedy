@@ -16,6 +16,7 @@
     enabled: true,
     catSize: 140,
     catColor: '#322d35',
+    catTheme: 'black',
     eyeColor: '#ffffff',
     showLedge: true,
     laserMode: false,
@@ -145,12 +146,15 @@
         <!-- Kuyruk (Tail) -->
         <g class="kedy-tail-group" id="kedyTailGroup">
           <path id="kedyTail" d="M 152 86 C 166 86 172 110 165 135 C 158 160 138 174 120 166 C 107 160 110 144 122 140 C 133 136 145 146 150 135 C 156 118 152 102 144 86 Z" fill="#322D35"/>
+          <path id="kedyTuxedoTailTip" class="kedy-tuxedo-detail" d="M 120 166 C 107 160 110 144 122 140 C 117 148 114 157 120 166 Z" fill="#FFFFFF" style="display:none;"/>
         </g>
 
         <!-- Gövde ve Pati (Body & Front Paw) -->
         <g id="kedyBodyGroup">
           <path id="kedyBody" d="M 38 86 C 38 86 42 74 58 64 C 70 56 84 56 94 58 C 112 48 142 49 158 70 C 162 76 160 84 154 86 Z" fill="#322D35"/>
+          <path id="kedyTuxedoChest" class="kedy-tuxedo-detail" d="M 44 86 C 45 74 54 64 68 64 C 62 72 58 80 58 86 Z" fill="#FFFFFF" style="display:none;"/>
           <path id="kedyPaw" d="M 38 78 C 33 78 24 81 22 89 C 20 97 24 102 30 102 C 37 102 41 95 42 86 Z" fill="#322D35"/>
+          <path id="kedyTuxedoPaw" class="kedy-tuxedo-detail" d="M 22 89 C 20 97 24 102 30 102 C 37 102 41 95 40 88 C 36 90 28 90 22 89 Z" fill="#FFFFFF" style="display:none;"/>
         </g>
 
         <!-- Kafa ve Kulaklar (Head & Ears) -->
@@ -168,6 +172,9 @@
             C 26 70 28 50 42 42 Z
           " fill="#322D35"/>
 
+          <!-- Smokinli Burun/Çene Beyazlığı (Tuxedo Muzzle) -->
+          <path id="kedyTuxedoMuzzle" class="kedy-tuxedo-detail" d="M 52 54 C 54 50 62 50 64 54 C 68 60 62 76 58 76 C 54 76 48 60 52 54 Z" fill="#FFFFFF" style="display:none;"/>
+
           <!-- Sol Göz -->
           <g id="kedyLeftEyeGroup" class="kedy-eye" style="transform-origin: 47px 52px;">
             <circle cx="47" cy="52" r="6" fill="#FFFFFF" class="kedy-eye-sclera"/>
@@ -183,7 +190,7 @@
           </g>
 
           <!-- Burun Detayı -->
-          <path d="M 57 63 L 60 63 L 58.5 65 Z" fill="#58505E" opacity="0.5"/>
+          <path id="kedyNose" d="M 57 63 L 60 63 L 58.5 65 Z" fill="#58505E" opacity="0.6"/>
         </g>
       </svg>
     </div>
@@ -207,6 +214,7 @@
   const kedyPaw = shadow.getElementById('kedyPaw');
   const kedyTail = shadow.getElementById('kedyTail');
   const kedyHeadShape = shadow.getElementById('kedyHeadShape');
+  const kedyNose = shadow.getElementById('kedyNose');
 
   // Tracking state
   let mouseX = window.innerWidth * 0.5;
@@ -230,12 +238,24 @@
     kedySvg.setAttribute('width', w);
     kedySvg.setAttribute('height', h);
 
-    // Colors
-    const catColor = config.catColor || '#322d35';
+    // Colors & Theme
+    const isTuxedo = config.catTheme === 'tuxedo';
+    const catColor = isTuxedo ? '#221f26' : (config.catColor || '#322d35');
+
     kedyBody.setAttribute('fill', catColor);
     kedyPaw.setAttribute('fill', catColor);
     kedyTail.setAttribute('fill', catColor);
     kedyHeadShape.setAttribute('fill', catColor);
+
+    // Tuxedo specific patches
+    const tuxedoDetails = shadow.querySelectorAll('.kedy-tuxedo-detail');
+    tuxedoDetails.forEach(el => {
+      el.style.display = isTuxedo ? 'block' : 'none';
+    });
+
+    if (kedyNose) {
+      kedyNose.setAttribute('fill', isTuxedo ? '#ff9eaa' : '#58505E');
+    }
 
     const eyeColor = config.eyeColor || '#ffffff';
     shadow.querySelectorAll('.kedy-eye-sclera').forEach(el => el.setAttribute('fill', eyeColor));

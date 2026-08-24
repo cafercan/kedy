@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     enabled: true,
     catSize: 140,
     catColor: '#322d35',
+    catTheme: 'black',
     eyeColor: '#ffffff',
     showLedge: true,
     laserMode: false,
@@ -32,12 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
     laserToggle.checked = items.laserMode;
     soundToggle.checked = items.soundEnabled;
 
-    updateActiveChips(items.catColor, items.eyeColor);
+    updateActiveChips(items.catTheme || 'black', items.catColor, items.eyeColor);
   });
 
-  function updateActiveChips(catColor, eyeColor) {
+  function updateActiveChips(catTheme, catColor, eyeColor) {
     catChips.forEach(chip => {
-      if (chip.dataset.color.toLowerCase() === catColor.toLowerCase()) {
+      const chipTheme = chip.dataset.theme;
+      const chipColor = chip.dataset.color;
+      if (chipTheme && catTheme) {
+        if (chipTheme === catTheme) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      } else if (chipColor && chipColor.toLowerCase() === (catColor || '').toLowerCase()) {
         chip.classList.add('active');
       } else {
         chip.classList.remove('active');
@@ -45,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     eyeChips.forEach(chip => {
-      if (chip.dataset.eye.toLowerCase() === eyeColor.toLowerCase()) {
+      if (chip.dataset.eye.toLowerCase() === (eyeColor || '').toLowerCase()) {
         chip.classList.add('active');
       } else {
         chip.classList.remove('active');
@@ -67,8 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
   catChips.forEach(chip => {
     chip.addEventListener('click', () => {
       const color = chip.dataset.color;
+      const theme = chip.dataset.theme || 'custom';
       catColorPicker.value = color;
-      chrome.storage.sync.set({ catColor: color });
+      chrome.storage.sync.set({ catColor: color, catTheme: theme });
       catChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
     });
@@ -76,14 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   catColorPicker.addEventListener('input', (e) => {
     const color = e.target.value;
-    chrome.storage.sync.set({ catColor: color });
-    catChips.forEach(c => {
-      if (c.dataset.color.toLowerCase() === color.toLowerCase()) {
-        c.classList.add('active');
-      } else {
-        c.classList.remove('active');
-      }
-    });
+    chrome.storage.sync.set({ catColor: color, catTheme: 'custom' });
+    catChips.forEach(c => c.classList.remove('active'));
   });
 
   eyeChips.forEach(chip => {

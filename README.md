@@ -8,12 +8,13 @@ Bu Chrome eklentisi, referans GIF'teki gibi farenizi web sayfasında hareket ett
 
 - **🎯 Canlı Fare Takibi:** Kedinin kafası ve gözbebekleri, farenizi hareket ettirdiğiniz yöne doğru yumuşak (LERP) bir fizikle 360° döner ve bakar.
 - **📏 Ayarlanabilir Boyut:** Eklenti menüsündeki kaydırıcı (slider) ile kedinin boyutunu istediğiniz gibi büyütebilir veya küçültebilirsiniz (veya sayfa üzerindeyken `Ctrl + Fare Tekerleği` ile anlık boyutlandırabilirsiniz).
-- **🎨 Renk ve Tema Seçenekleri:** 
-  - Gece Kedisi (GIF'teki orijinal siyah renk)
-  - Tekir Sarı
-  - Kar Beyazı
-  - Pembe Kedi veya İstediğiniz Özel Renk
-  - Zümrüt Yeşili, Kehribar, Mavi veya Beyaz Göz Renkleri
+- **🎨 Renk ve Cins / Tema Seçenekleri:** 
+  - 🎩 **Smokinli (Tuxedo)** (Beyaz önlük, beyaz patiler ve sevimli burun detayı)
+  - 🖤 **Gece Kedisi** (GIF'teki orijinal siyah renk)
+  - 🧡 **Tekir Sarı**
+  - 🤍 **Kar Beyazı**
+  - 🌸 **Pembe Kedi** veya İstediğiniz Özel Renk
+  - 👀 **Zümrüt Yeşili, Kehribar, Mavi veya Beyaz Göz Renkleri**
 - **🖐️ Sürüklenebilir (Draggable):** Kediyi tutup sayfanın istediğiniz yerine bırakabilirsiniz. Konum tarayıcı hafızasında saklanır.
 - **😻 Sevme & Kalp Çıkarma:** Kedinin üzerine tıkladığınızda mutlu mırıldanma/miyavlama sesi çıkarır ve sevimli kalpler/patiler fırlatır.
 - **🔴 Lazer Noktası Modu:** Açıldığında imlecinizin ucunda kedinin dikkatle izlediği kırmızı bir lazer noktası belirir.

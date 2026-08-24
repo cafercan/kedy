@@ -199,6 +199,11 @@ input[type="range"] {
   display: inline-block;
 }
 
+.color-dot.tuxedo-dot {
+  background: linear-gradient(135deg, #221f26 50%, #ffffff 50%);
+  border: 1px solid #94a3b8;
+}
+
 .custom-color-row {
   display: flex;
   align-items: center;
