@@ -177,8 +177,8 @@
 
           <!-- Smokinli Pembe İç Kulaklar -->
           <g class="kedy-tuxedo-detail" style="display:none;">
-            <path d="M 37 38 L 36 21 L 46 29 Z" fill="#FFAEC9" opacity="0.9"/>
-            <path d="M 75 37 L 84 19 L 73 29 Z" fill="#FFAEC9" opacity="0.9"/>
+            <path d="M 40 36 L 35.5 21 L 47 29 Z" fill="#FFAEC9" opacity="0.9"/>
+            <path d="M 77 36 L 83.5 19 L 73 27 Z" fill="#FFAEC9" opacity="0.9"/>
           </g>
 
           <!-- Smokinli Beyaz Yüz Maskesi (Alından inip yanakları ve çeneyi kaplayan V maske) -->
