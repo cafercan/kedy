@@ -152,9 +152,12 @@
         <!-- Gövde ve Pati (Body & Front Paw) -->
         <g id="kedyBodyGroup">
           <path id="kedyBody" d="M 38 86 C 38 86 42 74 58 64 C 70 56 84 56 94 58 C 112 48 142 49 158 70 C 162 76 160 84 154 86 Z" fill="#322D35"/>
-          <path id="kedyTuxedoChest" class="kedy-tuxedo-detail" d="M 44 86 C 45 74 54 64 68 64 C 62 72 58 80 58 86 Z" fill="#FFFFFF" style="display:none;"/>
+          <!-- Smokinli Beyaz Göğüs -->
+          <path id="kedyTuxedoChest" class="kedy-tuxedo-detail" d="M 38 86 C 38 70 48 56 66 56 C 76 56 86 68 88 86 Z" fill="#FFFFFF" style="display:none;"/>
+          
           <path id="kedyPaw" d="M 38 78 C 33 78 24 81 22 89 C 20 97 24 102 30 102 C 37 102 41 95 42 86 Z" fill="#322D35"/>
-          <path id="kedyTuxedoPaw" class="kedy-tuxedo-detail" d="M 22 89 C 20 97 24 102 30 102 C 37 102 41 95 40 88 C 36 90 28 90 22 89 Z" fill="#FFFFFF" style="display:none;"/>
+          <!-- Smokinli Beyaz Pati -->
+          <path id="kedyTuxedoPaw" class="kedy-tuxedo-detail" d="M 38 78 C 33 78 24 81 22 89 C 20 97 24 102 30 102 C 37 102 41 95 42 86 Z" fill="#FFFFFF" style="display:none;"/>
         </g>
 
         <!-- Kafa ve Kulaklar (Head & Ears) -->
@@ -172,8 +175,28 @@
             C 26 70 28 50 42 42 Z
           " fill="#322D35"/>
 
-          <!-- Smokinli Burun/Çene Beyazlığı (Tuxedo Muzzle) -->
-          <path id="kedyTuxedoMuzzle" class="kedy-tuxedo-detail" d="M 52 54 C 54 50 62 50 64 54 C 68 60 62 76 58 76 C 54 76 48 60 52 54 Z" fill="#FFFFFF" style="display:none;"/>
+          <!-- Smokinli Pembe İç Kulaklar -->
+          <g class="kedy-tuxedo-detail" style="display:none;">
+            <path d="M 37 38 L 36 21 L 46 29 Z" fill="#FFAEC9" opacity="0.9"/>
+            <path d="M 75 37 L 84 19 L 73 29 Z" fill="#FFAEC9" opacity="0.9"/>
+          </g>
+
+          <!-- Smokinli Beyaz Yüz Maskesi (Alından inip yanakları ve çeneyi kaplayan V maske) -->
+          <path id="kedyTuxedoFaceMask" class="kedy-tuxedo-detail" d="
+            M 58 26 
+            C 56 36 53 44 48 48 
+            C 43 52 35 56 34 68 
+            C 34 76 44 86 58 86 
+            C 72 86 82 76 82 68 
+            C 81 56 73 52 68 48 
+            C 63 44 60 36 58 26 Z
+          " fill="#FFFFFF" style="display:none;"/>
+
+          <!-- Smokinli Yanak Detayı -->
+          <g class="kedy-tuxedo-detail" style="display:none;">
+            <path d="M 34 64 L 40 65 L 35 70 Z" fill="#221F26"/>
+            <path d="M 82 64 L 76 65 L 81 70 Z" fill="#221F26"/>
+          </g>
 
           <!-- Sol Göz -->
           <g id="kedyLeftEyeGroup" class="kedy-eye" style="transform-origin: 47px 52px;">
@@ -189,7 +212,13 @@
             <circle cx="67" cy="46" r="1.3" fill="#FFFFFF" opacity="0.9"/>
           </g>
 
-          <!-- Burun Detayı -->
+          <!-- Smokinli Burun ve Ağız Çizgileri -->
+          <g class="kedy-tuxedo-detail" style="display:none;">
+            <path d="M 55 60 L 61 60 L 58 63 Z" fill="#221F26"/>
+            <path d="M 58 63 L 58 66 M 58 66 C 56 66 54 68 54 69 M 58 66 C 60 66 62 68 62 69" stroke="#221F26" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </g>
+
+          <!-- Normal Burun Detayı -->
           <path id="kedyNose" d="M 57 63 L 60 63 L 58.5 65 Z" fill="#58505E" opacity="0.6"/>
         </g>
       </svg>

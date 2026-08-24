@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Kedy - İmleç Takip Eden Kedi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fare imlecinizi kafası ve gözleriyle canlı takip eden sevimli kedi eklentisi. Boyutu ve rengi ayarlanabilir.",
   "permissions": [
     "storage"
