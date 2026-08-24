@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kedy Ayarları</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <span class="icon">🐾</span>
+        <h1>Kedy</h1>
+        <span class="version-tag">v0.1.0</span>
+      </div>
+      <label class="switch-toggle" title="Eklentiyi Aç / Kapat">
+        <input type="checkbox" id="enabledToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+      <!-- Boyut Ayarı (Size Slider) -->
+      <section class="control-group">
+        <div class="group-header">
+          <label for="sizeSlider">Kedi Boyutu</label>
+          <span id="sizeVal" class="value-badge">140px</span>
+        </div>
+        <div class="slider-wrapper">
+          <span class="sub-label">Küçük</span>
+          <input type="range" id="sizeSlider" min="70" max="300" step="5" value="140">
+          <span class="sub-label">Büyük</span>
+        </div>
+      </section>
+
+      <!-- Renk Temaları -->
+      <section class="control-group">
+        <label class="group-label">Kedi Rengi</label>
+        <div class="theme-chips">
+          <button class="chip active" data-color="#322d35" title="Gece Kedisi (GIF)">
+            <span class="color-dot" style="background:#322d35;"></span> Gece
+          </button>
+          <button class="chip" data-color="#e67e22" title="Tekir / Sarı">
+            <span class="color-dot" style="background:#e67e22;"></span> Tekir
+          </button>
+          <button class="chip" data-color="#f8fafc" title="Beyaz">
+            <span class="color-dot" style="background:#f8fafc; border:1px solid #cbd5e1;"></span> Beyaz
+          </button>
+          <button class="chip" data-color="#ec4899" title="Pembe">
+            <span class="color-dot" style="background:#ec4899;"></span> Pembe
+          </button>
+        </div>
+        <div class="custom-color-row">
+          <span class="sub-label">Özel Renk:</span>
+          <input type="color" id="catColorPicker" value="#322d35">
+        </div>
+      </section>
+
+      <!-- Göz Rengi -->
+      <section class="control-group">
+        <label class="group-label">Göz Rengi</label>
+        <div class="theme-chips">
+          <button class="eye-chip active" data-eye="#ffffff" title="Beyaz">
+            <span class="color-dot" style="background:#ffffff; border:1px solid #cbd5e1;"></span> Beyaz
+          </button>
+          <button class="eye-chip" data-eye="#10b981" title="Zümrüt Yeşili">
+            <span class="color-dot" style="background:#10b981;"></span> Yeşil
+          </button>
+          <button class="eye-chip" data-eye="#f59e0b" title="Kehribar / Sarı">
+            <span class="color-dot" style="background:#f59e0b;"></span> Kehribar
+          </button>
+          <button class="eye-chip" data-eye="#06b6d4" title="Buz Mavisi">
+            <span class="color-dot" style="background:#06b6d4;"></span> Mavi
+          </button>
+        </div>
+      </section>
+
+      <!-- Konum (Position) -->
+      <section class="control-group">
+        <label class="group-label" for="posSelect">Varsayılan Konum</label>
+        <div class="select-row">
+          <select id="posSelect">
+            <option value="bottom-right">Sağ Alt (Varsayılan)</option>
+            <option value="bottom-center">Orta Alt</option>
+            <option value="bottom-left">Sol Alt</option>
+            <option value="top-right">Sağ Üst</option>
+            <option value="top-left">Sol Üst</option>
+          </select>
+          <button id="resetPosBtn" class="btn-secondary" title="Sürüklenmiş konumu sıfırla">Sıfırla</button>
+        </div>
+      </section>
+
+      <!-- Seçenekler (Toggles) -->
+      <section class="toggles-grid">
+        <label class="toggle-item">
+          <input type="checkbox" id="ledgeToggle" checked>
+          <span>Tüneme Çubuğu</span>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="laserToggle">
+          <span>Lazer Noktası 🔴</span>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="soundToggle" checked>
+          <span>Mırıldama Sesi 🔊</span>
+        </label>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>💡 Kediyi sayfada sürükleyebilir veya tıklayıp sevebilirsiniz!</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

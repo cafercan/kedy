@@ -1,0 +1,6 @@
+/* Kedy content script root level styles */
+#kedy-extension-host {
+  all: initial;
+  position: static;
+  z-index: 2147483647;
+}
