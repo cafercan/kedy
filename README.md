@@ -25,12 +25,19 @@ Bu Chrome eklentisi, referans GIF'teki gibi farenizi web sayfasında hareket ett
 
 ## 🚀 Chrome'a Nasıl Yüklenir?
 
-1. Google Chrome tarayıcınızı açın.
-2. Adres çubuğuna `chrome://extensions` yazıp **Enter**'a basın (veya sağ üstteki üç nokta menüsünden **Uzantılar > Uzantıları Yönet**'i seçin).
+### Yöntem 1: Paketlenmiş Dosya (.CRX) ile Hızlı Yükleme (Klasöre Çıkartma Gerektirmez)
+1. [Releases sayfasından](https://github.com/cafercan/kedy/releases/latest) **`kedy-chrome-extension-v0.1.3.crx`** dosyasını indirin.
+2. Google Chrome'da adres çubuğuna `chrome://extensions` yazıp **Enter**'a basın.
 3. Sağ üst köşedeki **Geliştirici modu (Developer mode)** anahtarını açın.
-4. Sol üstte beliren **Paketlenmemiş öge yükle (Load unpacked)** butonuna tıklayın.
-5. Açılan pencerede bu proje klasörünü (`D:\Workspaces\AI\Kedy`) seçin.
-6. Artık eklentiniz yüklendi! Sağ üstteki yapboz (eklenti) simgesine tıklayıp **Kedy**'yi sabitleyebilirsiniz.
+4. İndirdiğiniz `.crx` dosyasını `chrome://extensions` sayfasının üzerine **sürükleyip bırakın (drag & drop)**.
+5. Açılan onay kutusunda **"Uzantıyı Ekle"** butonuna tıklayın. Hazır!
+
+---
+
+### Yöntem 2: ZIP veya Kaynak Klasör ile Yükleme
+1. [Releases sayfasından](https://github.com/cafercan/kedy/releases/latest) **`.zip`** dosyasını indirin ve klasöre çıkartın.
+2. Chrome'da `chrome://extensions` adresine gidin ve **Geliştirici modu**nu açın.
+3. Sol üstteki **Paketlenmemiş öge yükle (Load unpacked)** butonuna basarak çıkarttığınız klasörü seçin.
 
 ---
 
