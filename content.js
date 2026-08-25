@@ -138,6 +138,31 @@
   catWrapper.innerHTML = `
     <div class="kedy-wrapper">
       <svg class="kedy-svg" id="kedySvg" viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Kuyruk Kırpma Alanı -->
+          <clipPath id="kedyTailClip">
+            <path d="M 152 86 C 166 86 172 110 165 135 C 158 160 138 174 120 166 C 107 160 110 144 122 140 C 133 136 145 146 150 135 C 156 118 152 102 144 86 Z"/>
+          </clipPath>
+          <!-- Gövde Kırpma Alanı -->
+          <clipPath id="kedyBodyClip">
+            <path d="M 38 86 C 38 86 42 74 58 64 C 70 56 84 56 94 58 C 112 48 142 49 158 70 C 162 76 160 84 154 86 Z"/>
+          </clipPath>
+          <!-- Kafa Kırpma Alanı -->
+          <clipPath id="kedyHeadClip">
+            <path d="
+              M 36 42
+              C 40 37 37 23 34 16
+              L 50 28
+              C 56 24 64 24 70 28
+              L 86 14
+              C 85 23 79 34 80 42
+              C 87 51 86 69 78 78
+              C 68 86 48 86 38 78
+              C 30 69 29 51 36 42 Z
+            "/>
+          </clipPath>
+        </defs>
+
         <!-- Tüneme Çubuğu (Ledge Bar) -->
         <g id="kedyLedge">
           <rect x="0" y="86" width="200" height="24" rx="12" fill="#E2E8F0" opacity="0.95"/>
@@ -146,70 +171,127 @@
         <!-- Kuyruk (Tail) -->
         <g class="kedy-tail-group" id="kedyTailGroup">
           <path id="kedyTail" d="M 152 86 C 166 86 172 110 165 135 C 158 160 138 174 120 166 C 107 160 110 144 122 140 C 133 136 145 146 150 135 C 156 118 152 102 144 86 Z" fill="#322D35"/>
-          <path id="kedyTuxedoTailTip" class="kedy-tuxedo-detail" d="M 120 166 C 107 160 110 144 122 140 C 117 148 114 157 120 166 Z" fill="#FFFFFF" style="display:none;"/>
+
+          <!-- Kuyruk içi detaylar (clipPath ile kuyruk sınırına kırpılır) -->
+          <g clip-path="url(#kedyTailClip)">
+            <path id="kedyTuxedoTailTip" class="kedy-tuxedo-detail" d="M 100 140 L 140 140 L 140 180 L 100 180 Z" fill="#FFFFFF" style="display:none;"/>
+            <!-- Sarman Kuyruk Çizgileri -->
+            <g class="kedy-sarman-detail" style="display:none;">
+              <rect x="140" y="96" width="30" height="6" rx="3" transform="rotate(20 155 99)" fill="#B6550A"/>
+              <rect x="135" y="114" width="30" height="6" rx="3" transform="rotate(-5 150 117)" fill="#B6550A"/>
+              <rect x="128" y="132" width="28" height="6" rx="3" transform="rotate(-28 142 135)" fill="#B6550A"/>
+              <rect x="110" y="148" width="25" height="6" rx="3" transform="rotate(-50 122 151)" fill="#B6550A"/>
+            </g>
+          </g>
         </g>
 
         <!-- Gövde ve Pati (Body & Front Paw) -->
         <g id="kedyBodyGroup">
           <path id="kedyBody" d="M 38 86 C 38 86 42 74 58 64 C 70 56 84 56 94 58 C 112 48 142 49 158 70 C 162 76 160 84 154 86 Z" fill="#322D35"/>
-          <!-- Smokinli Beyaz Göğüs -->
-          <path id="kedyTuxedoChest" class="kedy-tuxedo-detail" d="M 38 86 C 38 70 48 56 66 56 C 76 56 86 68 88 86 Z" fill="#FFFFFF" style="display:none;"/>
+
+          <!-- Gövde içi detaylar (clipPath ile gövde sınırına kırpılır) -->
+          <g clip-path="url(#kedyBodyClip)">
+            <!-- Smokinli Beyaz Göğüs -->
+            <path id="kedyTuxedoChest" class="kedy-tuxedo-detail" d="M 38 86 C 38 70 48 56 66 56 C 76 56 86 68 88 86 Z" fill="#FFFFFF" style="display:none;"/>
+            <!-- Sarman Gövde Çizgileri -->
+            <g class="kedy-sarman-detail" style="display:none;">
+              <path d="M 68 54 C 72 66 70 76 68 86 C 64 86 63 74 62 60 Z" fill="#B6550A"/>
+              <path d="M 92 50 C 96 64 94 76 91 86 C 87 86 88 72 86 56 Z" fill="#B6550A"/>
+              <path d="M 116 48 C 120 62 118 75 114 86 C 110 86 112 70 110 54 Z" fill="#B6550A"/>
+              <path d="M 138 58 C 143 69 141 77 138 86 C 134 86 135 74 133 64 Z" fill="#B6550A"/>
+            </g>
+          </g>
           
           <path id="kedyPaw" d="M 38 78 C 33 78 24 81 22 89 C 20 97 24 102 30 102 C 37 102 41 95 42 86 Z" fill="#322D35"/>
           <!-- Smokinli Beyaz Pati -->
           <path id="kedyTuxedoPaw" class="kedy-tuxedo-detail" d="M 38 78 C 33 78 24 81 22 89 C 20 97 24 102 30 102 C 37 102 41 95 42 86 Z" fill="#FFFFFF" style="display:none;"/>
+
+          <!-- Sarman Pati Çizgisi -->
+          <g class="kedy-sarman-detail" style="display:none;">
+            <path d="M 23 88 C 28 87 34 88 38 89 C 38 91 32 91 24 90 Z" fill="#B6550A"/>
+          </g>
         </g>
 
         <!-- Kafa ve Kulaklar (Head & Ears) -->
         <g id="kedyHeadGroup" style="transform-origin: 58px 58px;">
-          <!-- Kafa Şekli -->
+          <!-- Kafa Şekli (kulak altları yumuşak eğrilerle) -->
           <path id="kedyHeadShape" d="
-            M 42 42 
-            L 34 16 
-            L 50 28 
-            C 56 24 64 24 70 28 
-            L 86 14 
-            L 78 40 
-            C 90 50 88 70 78 78 
-            C 68 86 46 86 36 78 
-            C 26 70 28 50 42 42 Z
+            M 36 42
+            C 40 37 37 23 34 16
+            L 50 28
+            C 56 24 64 24 70 28
+            L 86 14
+            C 85 23 79 34 80 42
+            C 87 51 86 69 78 78
+            C 68 86 48 86 38 78
+            C 30 69 29 51 36 42 Z
           " fill="#322D35"/>
 
-          <!-- Smokinli Pembe İç Kulaklar -->
-          <g class="kedy-tuxedo-detail" style="display:none;">
-            <path d="M 40 36 L 35.5 21 L 47 29 Z" fill="#FFAEC9" opacity="0.9"/>
-            <path d="M 77 36 L 83.5 19 L 73 27 Z" fill="#FFAEC9" opacity="0.9"/>
+          <!-- Kafa içi detaylar (clipPath ile kafa sınırına kırpılır) -->
+          <g clip-path="url(#kedyHeadClip)">
+            <!-- Smokinli Pembe İç Kulaklar -->
+            <g class="kedy-tuxedo-detail" style="display:none;">
+              <path d="M 44 33 L 38.5 23 L 46 29.5 Z" fill="#FFAEC9" opacity="0.9"/>
+              <path d="M 75 33 L 81.5 21 L 72.5 28.5 Z" fill="#FFAEC9" opacity="0.9"/>
+            </g>
+
+            <!-- Smokinli Beyaz Yüz Maskesi -->
+            <path id="kedyTuxedoFaceMask" class="kedy-tuxedo-detail" d="
+              M 58 26
+              C 56 36 53 44 48 48
+              C 43 52 35 56 34 68
+              C 34 76 44 86 58 86
+              C 72 86 82 76 82 68
+              C 81 56 73 52 68 48
+              C 63 44 60 36 58 26 Z
+            " fill="#FFFFFF" style="display:none;"/>
+
+            <!-- Smokinli Yanak Detayı -->
+            <g class="kedy-tuxedo-detail" style="display:none;">
+              <path d="M 34 64 L 40 65 L 35 70 Z" fill="#221F26"/>
+              <path d="M 82 64 L 76 65 L 81 70 Z" fill="#221F26"/>
+            </g>
+
+            <!-- Sarman Kafa Detayları -->
+            <g class="kedy-sarman-detail" style="display:none;">
+              <!-- Pembe İç Kulaklar -->
+              <path d="M 44 33 L 38.5 23 L 46 29.5 Z" fill="#FFAEC9" opacity="0.9"/>
+              <path d="M 75 33 L 81.5 21 L 72.5 28.5 Z" fill="#FFAEC9" opacity="0.9"/>
+              <!-- Alın Çizgileri (Tabby M) -->
+              <path d="M 57 28 L 59 28 L 58.5 40 L 57 40 Z" fill="#B6550A"/>
+              <path d="M 50 31 L 52 30 L 52.5 41 L 51 42 Z" fill="#B6550A"/>
+              <path d="M 66 31 L 64 30 L 63.5 41 L 65 42 Z" fill="#B6550A"/>
+              <!-- Yanak Çizgileri -->
+              <path d="M 32 54 L 40 55 L 39 57 L 32 56 Z" fill="#B6550A"/>
+              <path d="M 32 62 L 39 63 L 38 65 L 33 64 Z" fill="#B6550A"/>
+              <path d="M 82 52 L 75 53 L 76 55 L 82 54 Z" fill="#B6550A"/>
+              <path d="M 81 60 L 75 61 L 76 63 L 80 62 Z" fill="#B6550A"/>
+              <!-- Açık Krem Ağız/Bıyık Alanı -->
+              <path d="M 52 57 C 54 53 62 53 64 57 C 67 63 62 72 58 72 C 54 72 49 63 52 57 Z" fill="#FFC993"/>
+              <!-- Burun ve Ağız -->
+              <path d="M 56 61 L 60 61 L 58 63.5 Z" fill="#8A3805"/>
+              <path d="M 58 63.5 L 58 66 M 58 66 C 56 66 54 68 54 69 M 58 66 C 60 66 62 68 62 69" stroke="#6E2B02" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+            </g>
           </g>
 
-          <!-- Smokinli Beyaz Yüz Maskesi (Alından inip yanakları ve çeneyi kaplayan V maske) -->
-          <path id="kedyTuxedoFaceMask" class="kedy-tuxedo-detail" d="
-            M 58 26 
-            C 56 36 53 44 48 48 
-            C 43 52 35 56 34 68 
-            C 34 76 44 86 58 86 
-            C 72 86 82 76 82 68 
-            C 81 56 73 52 68 48 
-            C 63 44 60 36 58 26 Z
-          " fill="#FFFFFF" style="display:none;"/>
-
-          <!-- Smokinli Yanak Detayı -->
-          <g class="kedy-tuxedo-detail" style="display:none;">
-            <path d="M 34 64 L 40 65 L 35 70 Z" fill="#221F26"/>
-            <path d="M 82 64 L 76 65 L 81 70 Z" fill="#221F26"/>
+          <!-- Bıyıklar (kafa dışına taşması doğal) -->
+          <g class="kedy-sarman-detail" style="display:none;">
+            <path d="M 38 64 L 18 62 M 38 66 L 19 67 M 39 68 L 21 72" stroke="#4A1E02" stroke-width="0.9" stroke-linecap="round"/>
+            <path d="M 77 62 L 97 60 M 77 64 L 96 65 M 76 66 L 94 70" stroke="#4A1E02" stroke-width="0.9" stroke-linecap="round"/>
           </g>
 
           <!-- Sol Göz -->
-          <g id="kedyLeftEyeGroup" class="kedy-eye" style="transform-origin: 47px 52px;">
-            <circle cx="47" cy="52" r="6" fill="#FFFFFF" class="kedy-eye-sclera"/>
-            <circle id="kedyLeftPupil" cx="47" cy="52" r="3.2" fill="#1C1820" class="kedy-eye-pupil"/>
-            <circle cx="45" cy="50" r="1.3" fill="#FFFFFF" opacity="0.9"/>
+          <g id="kedyLeftEyeGroup" class="kedy-eye" style="transform-origin: 47px 48px;">
+            <circle cx="47" cy="48" r="6" fill="#FFFFFF" class="kedy-eye-sclera"/>
+            <circle id="kedyLeftPupil" cx="47" cy="48" r="3.2" fill="#1C1820" class="kedy-eye-pupil"/>
+            <circle id="kedyLeftEyeHighlight" cx="45.6" cy="46.6" r="1" fill="#FFFFFF" opacity="0.9"/>
           </g>
 
           <!-- Sağ Göz -->
           <g id="kedyRightEyeGroup" class="kedy-eye" style="transform-origin: 69px 48px;">
             <circle cx="69" cy="48" r="6" fill="#FFFFFF" class="kedy-eye-sclera"/>
             <circle id="kedyRightPupil" cx="69" cy="48" r="3.2" fill="#1C1820" class="kedy-eye-pupil"/>
-            <circle cx="67" cy="46" r="1.3" fill="#FFFFFF" opacity="0.9"/>
+            <circle id="kedyRightEyeHighlight" cx="67.6" cy="46.6" r="1" fill="#FFFFFF" opacity="0.9"/>
           </g>
 
           <!-- Smokinli Burun ve Ağız Çizgileri -->
@@ -236,6 +318,8 @@
   const headGroup = shadow.getElementById('kedyHeadGroup');
   const leftPupil = shadow.getElementById('kedyLeftPupil');
   const rightPupil = shadow.getElementById('kedyRightPupil');
+  const leftEyeHighlight = shadow.getElementById('kedyLeftEyeHighlight');
+  const rightEyeHighlight = shadow.getElementById('kedyRightEyeHighlight');
   const leftEyeGroup = shadow.getElementById('kedyLeftEyeGroup');
   const rightEyeGroup = shadow.getElementById('kedyRightEyeGroup');
   const kedyLedge = shadow.getElementById('kedyLedge');
@@ -269,7 +353,14 @@
 
     // Colors & Theme
     const isTuxedo = config.catTheme === 'tuxedo';
-    const catColor = isTuxedo ? '#221f26' : (config.catColor || '#322d35');
+    const isSarman = config.catTheme === 'orange' || config.catTheme === 'sarman';
+    let catColor = config.catColor || '#322d35';
+
+    if (isTuxedo) {
+      catColor = '#221f26';
+    } else if (isSarman) {
+      catColor = '#E88624';
+    }
 
     kedyBody.setAttribute('fill', catColor);
     kedyPaw.setAttribute('fill', catColor);
@@ -282,8 +373,15 @@
       el.style.display = isTuxedo ? 'block' : 'none';
     });
 
+    // Sarman specific stripes & details
+    const sarmanDetails = shadow.querySelectorAll('.kedy-sarman-detail');
+    sarmanDetails.forEach(el => {
+      el.style.display = isSarman ? 'block' : 'none';
+    });
+
     if (kedyNose) {
-      kedyNose.setAttribute('fill', isTuxedo ? '#ff9eaa' : '#58505E');
+      kedyNose.setAttribute('fill', isTuxedo ? '#ff9eaa' : (isSarman ? '#8a3805' : '#58505E'));
+      kedyNose.style.display = (isTuxedo || isSarman) ? 'none' : 'block';
     }
 
     const eyeColor = config.eyeColor || '#ffffff';
@@ -552,9 +650,13 @@
       const py = Math.sin(angle) * pupilD;
 
       leftPupil.setAttribute('cx', (47 + px).toFixed(2));
-      leftPupil.setAttribute('cy', (52 + py).toFixed(2));
+      leftPupil.setAttribute('cy', (48 + py).toFixed(2));
       rightPupil.setAttribute('cx', (69 + px).toFixed(2));
       rightPupil.setAttribute('cy', (48 + py).toFixed(2));
+      leftEyeHighlight.setAttribute('cx', (45.6 + px).toFixed(2));
+      leftEyeHighlight.setAttribute('cy', (46.6 + py).toFixed(2));
+      rightEyeHighlight.setAttribute('cx', (67.6 + px).toFixed(2));
+      rightEyeHighlight.setAttribute('cy', (46.6 + py).toFixed(2));
     }
 
     requestAnimationFrame(renderLoop);

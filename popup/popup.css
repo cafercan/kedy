@@ -204,6 +204,17 @@ input[type="range"] {
   border: 1px solid #94a3b8;
 }
 
+.color-dot.sarman-dot {
+  background: repeating-linear-gradient(
+    45deg,
+    #e88624,
+    #e88624 3px,
+    #b6550a 3px,
+    #b6550a 6px
+  );
+  border: 1px solid #b6550a;
+}
+
 .custom-color-row {
   display: flex;
   align-items: center;

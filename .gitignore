@@ -3,5 +3,8 @@
 Thumbs.db
 *.tmp
 *.zip
+*.crx
+*.pem
+dist/
 .vscode/
 .idea/
