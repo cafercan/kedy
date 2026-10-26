@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Manifest is valid and points at existing files
+        run: |
+          node -e '
+            const fs = require("fs");
+            const m = JSON.parse(fs.readFileSync("manifest.json", "utf8"));
+            if (m.manifest_version !== 3) throw new Error("manifest_version must be 3");
+            if (!/^\d+\.\d+\.\d+$/.test(m.version)) throw new Error("bad version " + m.version);
+            const paths = [
+              ...Object.values(m.icons || {}),
+              ...Object.values(m.action?.default_icon || {}),
+              m.action?.default_popup,
+              m.background?.service_worker,
+              ...(m.content_scripts || []).flatMap(c => [...(c.js || []), ...(c.css || [])]),
+            ].filter(Boolean);
+            const missing = paths.filter(p => !fs.existsSync(p));
+            if (missing.length) throw new Error("missing: " + missing.join(", "));
+            console.log("manifest ok, " + paths.length + " files referenced");
+          '
+
+      - name: JavaScript parses
+        run: for f in background.js content.js popup/popup.js; do node --check "$f"; done
+
+      - name: Package builds
+        run: bash scripts/package.sh && unzip -l dist/*.zip && cat dist/SHA256SUMS.txt
